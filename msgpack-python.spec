@@ -4,14 +4,13 @@
 #
 Name     : msgpack-python
 Version  : 0.4.6
-Release  : 15
+Release  : 16
 URL      : https://pypi.python.org/packages/source/m/msgpack-python/msgpack-python-0.4.6.tar.gz
 Source0  : https://pypi.python.org/packages/source/m/msgpack-python/msgpack-python-0.4.6.tar.gz
 Summary  : MessagePack (de)serializer.
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: msgpack-python-python
-BuildRequires : msgpack-python
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : python-dev
@@ -45,7 +44,8 @@ python3 setup.py build -b py3
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=intel.com,localhost
-py.test-2.7
+PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages py.test-2.7 --verbose
+PYTHONPATH=%{buildroot}/usr/lib/python3.5/site-packages py.test-3.5 --verbose
 %install
 rm -rf %{buildroot}
 python2 setup.py build -b py2 install --root=%{buildroot}
