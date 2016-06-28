@@ -4,7 +4,7 @@
 #
 Name     : msgpack-python
 Version  : 0.4.7
-Release  : 21
+Release  : 22
 URL      : https://pypi.python.org/packages/source/m/msgpack-python/msgpack-python-0.4.7.tar.gz
 Source0  : https://pypi.python.org/packages/source/m/msgpack-python/msgpack-python-0.4.7.tar.gz
 Summary  : MessagePack (de)serializer.
