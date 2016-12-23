@@ -4,7 +4,7 @@
 #
 Name     : msgpack-python
 Version  : 0.4.8
-Release  : 23
+Release  : 24
 URL      : http://pypi.debian.net/msgpack-python/msgpack-python-0.4.8.tar.gz
 Source0  : http://pypi.debian.net/msgpack-python/msgpack-python-0.4.8.tar.gz
 Summary  : MessagePack (de)serializer.
