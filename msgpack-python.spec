@@ -4,7 +4,7 @@
 #
 Name     : msgpack-python
 Version  : 0.4.8
-Release  : 29
+Release  : 30
 URL      : http://pypi.debian.net/msgpack-python/msgpack-python-0.4.8.tar.gz
 Source0  : http://pypi.debian.net/msgpack-python/msgpack-python-0.4.8.tar.gz
 Summary  : MessagePack (de)serializer.
@@ -19,12 +19,8 @@ BuildRequires : python3-dev
 BuildRequires : setuptools
 
 %description
-=======================
 MessagePack for Python
-=======================
-:author: INADA Naoki
-:version: 0.4.6
-:date: 2015-03-13
+        =======================
 
 %package python
 Summary: python components for the msgpack-python package.
@@ -38,7 +34,11 @@ python components for the msgpack-python package.
 %setup -q -n msgpack-python-0.4.8
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
+export SOURCE_DATE_EPOCH=1503121981
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -48,13 +48,18 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages py.test-2.7 --verbose || :
 %install
+export SOURCE_DATE_EPOCH=1503121981
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+echo ----[ mark ]----
+cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
 
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python*/*
+/usr/lib/python2*/*
+/usr/lib/python3*/*
