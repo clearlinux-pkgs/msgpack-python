@@ -14,7 +14,7 @@ Requires: msgpack-python-python3
 Requires: msgpack-python-python
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
